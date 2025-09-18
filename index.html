@@ -223,4 +223,60 @@
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="footer-content">
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#">Nosotros</a>
+                <a href="#">Servicios</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+
+        <div class="socials">
+            <img src="assets/ig.png" alt="ig" class="social-avatar">
+            <img src="assets/link.png" alt="link" class="social-avatar">
+            <img src="assets/git.png" alt="git" class="social-avatar">
+
+        </div>
+
+    </footer>
+
+    <div class="modal" id="loginModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="login-title">
+            <i class="fa-solid fa-xmark close-modal" aria-label="Cerrar"></i>
+            <h2 id="login-title">Iniciar Sesión</h2>
+            <form class="auth-form">
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="cta-button">Iniciar Sesión</button>
+            </form>
+            <p class="auth-redirect">¿No tienes una cuenta? <a href="#" class="open-register">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="register-title">
+            <i class="fa-solid fa-xmark close-modal" aria-label="Cerrar"></i>
+            <h2 id="signup-title">Registrarse</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <input type="password" placeholder="Confirmar contraseña" required>
+                <button type="submit" class="cta-button">Registrarse</button>
+            </form>
+            <p class="auth-redirect">¿Ya tienes una cuenta? <a href="#" class="open-login">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+
+
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="locale/en.js"></script>
+    <script type="module" src="locale/es.js"></script>
 </body>
