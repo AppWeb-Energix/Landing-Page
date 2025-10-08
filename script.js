@@ -110,6 +110,13 @@ function closeModal(modalId) {
 document.addEventListener('click', (e) => {
   const target = e.target;
 
+  // Toggle mobile nav
+  if (target.closest('.nav-toggle')) {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('open');
+    return;
+  }
+
   // --- 0) Si es un link "real" (href != "#") y NO es trigger de modal, permitir navegación ---
   const link = target.closest('a[href]');
   if (link) {
@@ -145,13 +152,22 @@ document.addEventListener('click', (e) => {
 
   // 3) Abrir desde botones principales (si usas contenedor .auth-buttons)
   if (target.closest('.auth-buttons .login')) {
+    // Abrir la webapp (profile.html) en una nueva pestaña
     e.preventDefault();
-    openModal('loginModal');
+    window.open('profile.html', '_blank');
     return;
   }
-  if (target.closest('.auth-buttons .sign-up')) {
-    e.preventDefault();
-    openModal('registerModal');
+
+  // 4) Internacionalización: cambiar idioma
+  if (target.classList.contains('lang-btn')) {
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    target.classList.add('active');
+    const lang = target.getAttribute('data-lang');
+    if (lang === 'en') {
+      import('./assets/locale/en.js').then(m => { try { m.setLang && m.setLang(); } catch(e) { console.error('Error setting EN lang:', e); } });
+    } else if (lang === 'es') {
+      import('./assets/locale/es.js').then(m => { try { m.setLang && m.setLang(); } catch(e) { console.error('Error setting ES lang:', e); } });
+    }
     return;
   }
 
@@ -164,20 +180,14 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  // 4) Cambios entre login <-> registro
-  if (target.closest('.open-register')) {
-    e.preventDefault();
-    limpiarFormulario(document.querySelector('#loginModal .auth-form'));
-    closeModal('loginModal');
-    openModal('registerModal');
-    return;
-  }
-  if (target.closest('.open-login')) {
-    e.preventDefault();
-    limpiarFormulario(document.querySelector('#registerModal .auth-form'));
-    closeModal('registerModal');
-    openModal('loginModal');
-    return;
+});
+
+// Idioma por defecto: inglés
+window.addEventListener('DOMContentLoaded', () => {
+  const enBtn = document.querySelector('.lang-btn[data-lang="en"]');
+  if (enBtn) {
+    enBtn.classList.add('active');
+    import('./assets/locale/en.js').then(m => { try { m.setLang && m.setLang(); } catch(e) { console.error('Error setting default EN lang:', e); } });
   }
 });
 
@@ -195,27 +205,36 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// 6) Submit (opcional, conserva tu lógica)
+// 6) Submit (formulario de contacto y otros)
 document.addEventListener('submit', (e) => {
-  const form = e.target.closest('.auth-form');
-  if (!form) return;
-  e.preventDefault();
-
-  // Si es login o registro, redirige a profile.html
-  if (
-    form.closest('#loginModal') ||
-    form.closest('#registerModal')
-  ) {
-    window.location.href = 'profile.html';
+  const form = e.target;
+  // Contacto
+  if (form.matches('#contactForm')) {
+    e.preventDefault();
+    // Detectar idioma activo
+    let lang = 'es';
+    const activeBtn = document.querySelector('.lang-btn.active');
+    if (activeBtn) lang = activeBtn.getAttribute('data-lang') || 'es';
+    // Mensaje según idioma
+    const msg = document.getElementById('contact-success');
+    if (msg) {
+      msg.textContent = lang === 'en'
+        ? 'Message sent successfully! We will contact you soon.'
+        : '¡Mensaje enviado correctamente! Pronto nos pondremos en contacto.';
+      msg.style.display = 'block';
+    }
+    // Limpiar campos
+    form.reset();
+    setTimeout(() => { if(msg) msg.style.display = 'none'; }, 3500);
     return;
   }
 
-  // Si quieres usar Swal/i18next para otros formularios, ponlo aquí
+  // Si es login o registro, redirige a profile.html
+  const authForm = form.closest('.auth-form');
+  if (authForm && (authForm.closest('#loginModal') || authForm.closest('#registerModal'))) {
+    e.preventDefault();
+    window.location.href = 'profile.html';
+    return;
+  }
 });
-// Redirigir al enviar el formulario de login
-document.querySelectorAll('#loginModal .auth-form, #registerModal .auth-form').forEach(form => {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita el envío normal del formulario
-        window.location.href = 'profile.html'; // Redirige a profile.html
-    });
-});
+
