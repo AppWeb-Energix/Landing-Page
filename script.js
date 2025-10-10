@@ -122,7 +122,7 @@ document.addEventListener('click', (e) => {
   if (link) {
     const href = link.getAttribute('href');
     const isRealLink = href && href !== '#' && !href.startsWith('javascript:');
-    const isModalTrigger = link.matches('[data-open-modal], .open-login, .open-register, .auth-buttons .login, .auth-buttons .sign-up');
+    const isModalTrigger = link.matches('[data-open-modal], .open-login, .open-register, .auth-buttons .sign-up');
     if (isRealLink && !isModalTrigger) {
       // Mostrar loader y dejar que el navegador navegue (¡no hagas preventDefault!)
       const loader = document.getElementById('loader');
