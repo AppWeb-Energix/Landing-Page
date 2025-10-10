@@ -152,11 +152,14 @@ document.addEventListener('click', (e) => {
 
   // 3) Abrir desde botones principales (si usas contenedor .auth-buttons)
   if (target.closest('.auth-buttons .login')) {
-    // Abrir la webapp (profile.html) en una nueva pestaña
+  const link = target.closest('a');
+  if (link && link.getAttribute('href') === 'profile.html') {
     e.preventDefault();
     window.open('profile.html', '_blank');
     return;
   }
+  // Si el href NO es 'profile.html', deja que el navegador abra el enlace normalmente
+}
 
   // 4) Internacionalización: cambiar idioma
   if (target.classList.contains('lang-btn')) {
