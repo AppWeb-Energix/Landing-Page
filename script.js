@@ -150,14 +150,7 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  // 3) Abrir desde botones principales (si usas contenedor .auth-buttons)
-  if (target.closest('.auth-buttons .login')) {
-  const link = target.closest('a');
-  if (link && link.getAttribute('href') === 'profile.html') {
-    e.preventDefault();
-    window.open('profile.html', '_blank');
-    return;
-  }
+
   // Si el href NO es 'profile.html', deja que el navegador abra el enlace normalmente
 }
 
