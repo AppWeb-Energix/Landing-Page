@@ -12,15 +12,11 @@
 </head>
 
 <body>
-    <div id="loader" hidden>
-        <div class="spinner"></div>
-    </div>
     <header>
         <nav>
             <div class="logo"><span>Energix</span></div>
             <button class="nav-toggle">
                 <i class="fa-solid fa-bars menu-icon"></i>
-                <i class="fa-solid fa-xmark close-icon"></i>
             </button>
 
             <div class="nav-links">
@@ -35,15 +31,13 @@
                     <a href="https://appweb-energix.github.io/Frontend-Energix/" class="login" target="_blank" rel="noopener">Iniciar Sesión</a>
                 </div>
 
-                <div class="language-selector">
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="es">ES</button>
-                </div>
+                <button class="lang-btn" id="lang-toggle" data-lang="en">EN</button>
             </div>
         </nav>
     </header>
-    <!----->
+
     <main>
+        <!-- Sección de héroe -->
         <section class="hero" id="hero">
             <div class="hero-center">
                 <h1>Energía inteligente y conectada, en la palma de tu mano</h1>
@@ -81,7 +75,8 @@
                 </div>
             </div>
         </section>
-        <!----->
+
+        <!-- Sección de videos -->
         <section class="videos" id="videos">
             <h2>Conoce más</h2>
             <div class="videos-container">
@@ -101,6 +96,7 @@
             </div>
         </section>
 
+        <!-- Sección de suscripción -->
         <section class="services" id="services">
             <h2>Tu consumo <em>bajo control</em>, siempre</h2>
 
@@ -135,6 +131,7 @@
             </div>
         </section>
 
+        <!-- Sección de testimonios -->
         <section class="testimonials" aria-labelledby="testimonials-title">
             <h2 id="testimonials-title">Experiencias que <em>inspiran</em></h2>
             <div class="testimonials-grid" role="list">
@@ -192,7 +189,7 @@
             </div>
         </section>
 
-        <!----->
+        <!-- Sección de suscripción -->
         <section class="subscription" id="subscription">
             <h2 style="text-align:center">Elige la energía a tu medida</h2>
             <p style="text-align:center">Descubre cuál de nuestros planes se adapta mejor a ti y empieza a ahorrar con
@@ -207,7 +204,7 @@
                         <li>Alertas mensuales</li>
                         <li>Integración con dispositivos (sujeto a condiciones)</li>
                     </ul>
-                    <a href="profile.html" class="cta-button" target="_blank" rel="noopener">Ver más</a>
+                    <a href="https://appweb-energix.github.io/Frontend-Energix/" class="cta-button" target="_blank" rel="noopener">Ver más</a>
                 </div>
                 <div class="student-plan subscription-card">
                     <h2>Plan Estudiantíl</h2>
@@ -220,7 +217,7 @@
                         <li>Alertas inteligentes (consumo inusual, luces encendidad)</li>
                         <li>Integración con hasta 2 dispositivos inteligentes</li>
                     </ul>
-                    <a href="profile.html" class="cta-button" target="_blank" rel="noopener">Ver más</a>
+                    <a href="https://appweb-energix.github.io/Frontend-Energix/" class="cta-button" target="_blank" rel="noopener">Ver más</a>
                 </div>
                 <div class="family-plan subscription-card">
                     <h2>Plan Familiar</h2>
@@ -235,11 +232,12 @@
                         <li>Panel estadístico familiar</li>
                         <li>Soporte prioritario</li>
                     </ul>
-                    <a href="profile.html" class="cta-button" target="_blank" rel="noopener">Ver más</a>
+                    <a href="https://appweb-energix.github.io/Frontend-Energix/" class="cta-button" target="_blank" rel="noopener">Ver más</a>
                 </div>
             </div>
         </section>
 
+        <!-- Sección de contacto -->
         <section class="contact" id="contact">
             <h1>Contáctanos</h1>
             <div class="contact-container">
