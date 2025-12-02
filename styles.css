@@ -977,15 +977,6 @@ html, body { overflow-x: hidden; }
   color: var(--text-primary);
   margin-bottom: 2rem;
 }
-
-.about-team,
-.about-product {
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .about-team h3,
 .about-product h3 {
   padding: 0.4rem;
@@ -997,22 +988,26 @@ html, body { overflow-x: hidden; }
   text-align: center;
   border-radius: 20px 20px 0 0;
 }
+.about-team,
+.about-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-.about-team video,
-.about-product video {
-  width: 100%;
-  border-radius: 0 0 20px 20px;
-  max-width: 100%;
-  height: auto;
+  overflow: hidden;
+  border-radius: 20px;
 }
-
+.about-team video,
+.about-product video,
 .about-team iframe,
 .about-product iframe {
   width: 100%;
-  border-radius: 0 0 20px 20px;
-  max-width: 100%;
   height: auto;
+  display: block;
+  border-radius: 0; /* ← importante, no necesitas borde aquí */
+  max-width: 100%;
 }
+
 
 /* Layout responsivo para las tarjetas */
 @media (min-width: 768px) {
