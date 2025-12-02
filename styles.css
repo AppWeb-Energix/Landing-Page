@@ -1001,14 +1001,14 @@ html, body { overflow-x: hidden; }
 .about-product video,
 .about-team iframe,
 .about-product iframe {
+  aspect-ratio: 16 / 9;   /* <--- CLAVE */
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0; /* ← importante, no necesitas borde aquí */
+  border-radius: 0;
   max-width: 100%;
+  object-fit: cover;      /* opcional: evita franjas negras */
 }
-
-
 /* Layout responsivo para las tarjetas */
 @media (min-width: 768px) {
   .videos .videos-container {
