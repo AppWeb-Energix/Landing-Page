@@ -1006,6 +1006,14 @@ html, body { overflow-x: hidden; }
   height: auto;
 }
 
+.about-team iframe,
+.about-product iframe {
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Layout responsivo para las tarjetas */
 @media (min-width: 768px) {
   .videos .videos-container {
